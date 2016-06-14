@@ -62,11 +62,20 @@ void MainWindow::nextTrack()
 void MainWindow::on_pushButton_clicked()
 {
     /* add (ここから) */
-    QString path;
+    QString path = getArtworkPath();
 
-    nextTrack();
-    path = getArtworkPath();
-
-    qDebug() << path;
+    QImage img(600, 595, QImage::Format_Invalid);
+    QImageReader qir(path);
+    bool isSuccess = qir.read(&img);
+    QRect imgRect = QRect(0, 0, img.width(), img.height());
+    if(isSuccess){
+        QPainter widgetpainter( ui->graphicsView->viewport() );
+        QRect paintRect = QRect(0, 0, ui->graphicsView->width(), ui->graphicsView->height());
+        widgetpainter.drawImage(paintRect, img, imgRect);
+        //widgetpainter.drawImage(0,0,img);
+        //ui->graphicsView->viewport()->update();
+    }
+    else
+        qDebug() << qir.errorString();
     /* add (ここまで) */
 }

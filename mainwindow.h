@@ -2,10 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-#include <QAxScriptEngine>      //add
-#include <QAxScript>            //add
-#include <QDebug>               //add
+#include <QAxScriptEngine>
+#include <QAxScript>
+#include <QDebug>
+#include <QWidget>
+#include <QGraphicsView>
+#include <QGraphicsPixmapItem>
+#include <QGraphicsScene>
+#include <QImageReader>
 
 namespace Ui {
 class MainWindow;
