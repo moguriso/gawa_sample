@@ -4,6 +4,8 @@ Artwork::Artwork(QWidget *parent) : QGraphicsView(parent)
 {
     mImg = NULL;
     mImgReader = NULL;
+
+    mParent = parent;
     m_manager = new QAxScriptManager(this);
     bool isRegistered = m_manager->registerEngine("VBScript", "vbs");
     if(isRegistered){
@@ -42,18 +44,42 @@ void Artwork::setAlpha(QImage *qImg, int alpha)
     }
 }
 
+bool Artwork::loadImage(QString path)
+{
+    bool r_inf = false;
+
+    QImage* pImg = new QImage();
+    QImageReader* pReader = new QImageReader(path);
+
+    bool isSuccess = pReader->read(pImg);
+    if(isSuccess){
+        if(path.indexOf("png") != -1)
+            setAlpha(pImg, 128);
+
+        if(!mImg)
+            delete mImg;
+        if(!mImgReader)
+            delete mImgReader;
+
+        mImg = pImg;
+        mImgReader = pReader;
+        r_inf = true;
+    }
+    else
+        qDebug() << pReader->errorString();
+
+    return r_inf;
+}
+
 void Artwork::updateImage(QPaintEvent *event, QString path)
 {
-    mImg = new QImage();
-    mImgReader = new QImageReader(path);
-
-    bool isSuccess = mImgReader->read(mImg);
-    QRect imgRect = QRect(0, 0, mImg->width(), mImg->height());
+    bool isSuccess = loadImage(path);
     if(isSuccess){
         if(path.indexOf("png") != -1)
             setAlpha(mImg, 128);
-
-        resize(mImg->width(), mImg->height());
+        QRect imgRect = QRect(0, 0, mImg->width(), mImg->height());
+        //resize(mImg->width(), mImg->height());
+        qDebug() << "view_width = " << mImg->width() << " view_height = " << mImg->height();
 
         QPainter widgetpainter( viewport() );
         QRect paintRect = QRect(0, 0, width(), height());
@@ -75,6 +101,8 @@ void Artwork::setNoImage(QPaintEvent *event, QString str)
 void Artwork::paintEvent(QPaintEvent *event)
 {
     QString path;
+
+    qDebug() << __func__ << " called";
 
     path = getArtworkPath();
     path = path.replace("\\\\", "\\");
@@ -108,11 +136,6 @@ int Artwork::getImageWidth()
     w = (mImg) ? mImg->width() : 0;
     qDebug() << "width = " << w;
 
-    if((w<300) || (1000<w))
-        w=300;
-
-    qDebug() << "width = " << w;
-
     return w;
 }
 
@@ -123,11 +146,22 @@ int Artwork::getImageHeight()
     h= (mImg) ? mImg->height() : 0;
     qDebug() << "height = " << h;
 
-    if((h<300) || (1000<h))
-        h=300;
-
-    qDebug() << "height = " << h;
     return h;
+}
+
+float Artwork::getAspectRatio(bool is)
+{
+    float fRet;
+
+    if(is)
+    {
+        fRet = (float)getImageHeight() / (float)getImageWidth();
+    }
+    else{
+        fRet = (float)getImageWidth() / (float)getImageHeight();
+    }
+
+    return fRet;
 }
 
 void Artwork::nextTrack()

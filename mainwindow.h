@@ -25,8 +25,9 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    void windowResize();
     Artwork *mArtwork;
+    void windowResize();
+    void paintEvent(QPaintEvent *);
 };
 
 #endif // MAINWINDOW_H

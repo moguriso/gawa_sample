@@ -22,6 +22,8 @@ public:
 
     int getImageWidth();
     int getImageHeight();
+    bool loadImage(QString);
+    float getAspectRatio(bool);
 
 private:
     QImage *mImg;
@@ -35,6 +37,7 @@ private:
     void finScript();
     void updateImage(QPaintEvent *, QString);
     void setNoImage(QPaintEvent *, QString);
+    QWidget *mParent;
 };
 
 #endif // ARTWORK_H
