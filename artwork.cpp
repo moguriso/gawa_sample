@@ -174,6 +174,19 @@ void Artwork::nextTrack()
         qDebug() << "didn't load";
 }
 
+QString Artwork::getTitle()
+{
+    QString rStr = "";
+    if (m_script){
+        QVariant var = m_script->call("getTitle()");
+        rStr = var.toString();
+    }
+    else
+        qDebug() << "didn't load";
+
+    return rStr;
+}
+
 void Artwork::enterScript()
 {
     qDebug() << __func__ << " called";

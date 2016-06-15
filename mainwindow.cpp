@@ -7,14 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-#if 0
-    Qt::WindowFlags flags = windowFlags();
-    flags |= Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint | Qt::FramelessWindowHint;
-    setWindowFlags(flags);
-#endif
-
     QString path = ui->graphicsView->getArtworkPath();
     ui->graphicsView->loadImage(path);
+    ui->titleLabel->setText(ui->graphicsView->getTitle());
     windowResize();
 }
 
@@ -45,6 +40,7 @@ void MainWindow::windowResize()
     qDebug() << "aspect = " << aspect;
 
     ui->pushButton->resize(w,ui->pushButton->height());
+    ui->titleLabel->resize(w,ui->titleLabel->height());
     ui->graphicsView->resize(w, h);
     //resize(width(),(int)((float)width()*aspect));
 
@@ -55,11 +51,13 @@ void MainWindow::on_pushButton_clicked()
 {
     ui->graphicsView->nextTrack();
     ui->graphicsView->viewport()->update();
+    ui->titleLabel->setText(ui->graphicsView->getTitle());
     windowResize();
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
 {
+    event = event;
     qDebug() << __func__ << " called";
     windowResize();
 }

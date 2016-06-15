@@ -24,6 +24,7 @@ public:
     int getImageHeight();
     bool loadImage(QString);
     float getAspectRatio(bool);
+    QString getTitle();
 
 private:
     QImage *mImg;
