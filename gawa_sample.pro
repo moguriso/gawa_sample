@@ -21,3 +21,8 @@ HEADERS  += mainwindow.h \
     artwork.h
 
 FORMS    += mainwindow.ui
+
+DISTFILES +=
+
+RESOURCES += \
+    gawa_rc.qrc

@@ -8,7 +8,7 @@ Artwork::Artwork(QWidget *parent) : QGraphicsView(parent)
     bool isRegistered = m_manager->registerEngine("VBScript", "vbs");
     if(isRegistered){
         qDebug() << "OK to register VBScript";
-        m_script = m_manager->load("C:\\msys64\\home\\adachi\\test.vbs", "HelloWorld");
+        m_script = m_manager->load("://test.vbs", "HelloWorld");
     }
     else
         qDebug() << "NG to register VBScript";
