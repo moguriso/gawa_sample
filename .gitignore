@@ -1,0 +1,7 @@
+
+*.dll
+*.a
+ItunesCtrl.dll
+libItunesCtrl.a
+ui_mainwindow.h
+

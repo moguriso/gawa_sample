@@ -2,14 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QAxScriptEngine>
-#include <QAxScript>
 #include <QDebug>
 #include <QWidget>
-#include <QGraphicsView>
-#include <QGraphicsPixmapItem>
-#include <QGraphicsScene>
-#include <QImageReader>
+#include <QMutex>
+
+#include "artwork.h"
 
 namespace Ui {
 class MainWindow;
@@ -28,11 +25,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
-    QString getArtworkPath();     //add
-    void nextTrack();             //add
-    QAxScriptManager *m_manager;  //add
-    QAxScript *m_script;          //add
+    void windowResize();
+    Artwork *mArtwork;
 };
 
 #endif // MAINWINDOW_H
