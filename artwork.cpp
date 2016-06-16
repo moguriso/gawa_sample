@@ -1,5 +1,7 @@
 #include "artwork.h"
 
+#include <QtWebEngineWidgets/QWebEngineView>
+
 Artwork::Artwork(QWidget *parent) : QGraphicsView(parent)
 {
     mImg = NULL;
@@ -11,6 +13,7 @@ Artwork::Artwork(QWidget *parent) : QGraphicsView(parent)
     if(isRegistered){
         qDebug() << "OK to register VBScript";
         m_script = m_manager->load("://test.vbs", "HelloWorld");
+        //m_script = m_manager->load("qrc://test.vbs", "HelloWorld");
     }
     else
         qDebug() << "NG to register VBScript";
@@ -102,7 +105,7 @@ void Artwork::paintEvent(QPaintEvent *event)
 {
     QString path;
 
-    qDebug() << __func__ << " called";
+    qDebug() << __FUNCTION__ << " called";
 
     path = getArtworkPath();
     path = path.replace("\\\\", "\\");
@@ -189,12 +192,20 @@ QString Artwork::getTitle()
 
 void Artwork::enterScript()
 {
-    qDebug() << __func__ << " called";
+    qDebug() << __FUNCTION__ << " called";
     mMutex.lock();
 }
 
 void Artwork::finScript()
 {
-    qDebug() << __func__ << " called";
+    qDebug() << __FUNCTION__ << " called";
     mMutex.unlock();
+}
+
+void Artwork::mouseReleaseEvent(QMouseEvent *event)
+{
+    QWebEngineView* WebView = new QWebEngineView();
+    QUrl url = "https://www.google.co.jp";
+    WebView->load(url);
+    WebView->show();
 }

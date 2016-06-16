@@ -67,7 +67,7 @@ End Sub
 'msgbox("Hello World")
 'WScript.Echo "Hello World"
 
-Dim ret
+'Dim ret
 
 'playTrack
 'nextTrack

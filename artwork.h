@@ -10,6 +10,7 @@
 #include <QGraphicsScene>
 #include <QImageReader>
 #include <QMutex>
+#include <QPushButton>
 
 class Artwork : public QGraphicsView
 {
@@ -18,13 +19,17 @@ public:
     ~Artwork();
     QString getArtworkPath();     //add
     void nextTrack();             //add
-    void paintEvent(QPaintEvent *);
+
 
     int getImageWidth();
     int getImageHeight();
     bool loadImage(QString);
     float getAspectRatio(bool);
     QString getTitle();
+
+//protected:
+    void paintEvent(QPaintEvent *);
+    void mouseReleaseEvent(QMouseEvent *);
 
 private:
     QImage *mImg;

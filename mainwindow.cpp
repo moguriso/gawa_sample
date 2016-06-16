@@ -58,6 +58,7 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::paintEvent(QPaintEvent *event)
 {
     event = event;
-    qDebug() << __func__ << " called";
+    qDebug() << __FUNCTION__ << " called";
+    ui->graphicsView->viewport()->update();
     windowResize();
 }
