@@ -1,6 +1,7 @@
 #include "artwork.h"
 
-#include <QtWebEngineWidgets/QWebEngineView>
+//#include <QtWebEngineWidgets/QWebEngineView>
+#include <QNetworkAccessManager>
 
 Artwork::Artwork(QWidget *parent) : QGraphicsView(parent)
 {
@@ -204,8 +205,13 @@ void Artwork::finScript()
 
 void Artwork::mouseReleaseEvent(QMouseEvent *event)
 {
+#if 0
     QWebEngineView* WebView = new QWebEngineView();
     QUrl url = "https://www.google.co.jp";
     WebView->load(url);
     WebView->show();
+#else
+    QNetworkAccessManager qam;
+
+#endif
 }

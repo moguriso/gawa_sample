@@ -10,11 +10,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QString path = ui->graphicsView->getArtworkPath();
     ui->graphicsView->loadImage(path);
     ui->titleLabel->setText(ui->graphicsView->getTitle());
-    windowResize();
+    //windowResize();
+
+    mTw = new Tw();
+
 }
 
 MainWindow::~MainWindow()
 {
+    delete mTw;
     delete ui;
 }
 
@@ -52,7 +56,12 @@ void MainWindow::on_pushButton_clicked()
     ui->graphicsView->nextTrack();
     ui->graphicsView->viewport()->update();
     ui->titleLabel->setText(ui->graphicsView->getTitle());
-    windowResize();
+    //windowResize();
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+
 }
 
 void MainWindow::paintEvent(QPaintEvent *event)
@@ -60,5 +69,6 @@ void MainWindow::paintEvent(QPaintEvent *event)
     event = event;
     qDebug() << __FUNCTION__ << " called";
     ui->graphicsView->viewport()->update();
-    windowResize();
+    //windowResize();
 }
+

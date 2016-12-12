@@ -7,6 +7,7 @@
 #include <QMutex>
 
 #include "artwork.h"
+#include "tw.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,9 +24,12 @@ public:
 private slots:
     void on_pushButton_clicked();
 
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     Artwork* mArtwork;
+    Tw* mTw;
     void windowResize();
     void paintEvent(QPaintEvent *);
 };

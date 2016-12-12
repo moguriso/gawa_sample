@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>454</width>
+    <height>444</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,9 +21,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
-      <width>771</width>
-      <height>491</height>
+      <y>130</y>
+      <width>431</width>
+      <height>291</height>
      </rect>
     </property>
     <property name="resizeAnchor">
@@ -34,8 +34,8 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
-      <width>771</width>
+      <y>20</y>
+      <width>431</width>
       <height>23</height>
      </rect>
     </property>
@@ -46,9 +46,9 @@
    <widget class="QLabel" name="titleLabel">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>50</y>
-      <width>729</width>
+      <x>10</x>
+      <y>100</y>
+      <width>431</width>
       <height>21</height>
      </rect>
     </property>
@@ -57,6 +57,19 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>431</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tweet</string>
     </property>
    </widget>
   </widget>

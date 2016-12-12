@@ -4,11 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT       += axcontainer
-QT += webenginewidgets network
+QT       += core gui twitterapi multimedia axcontainer network
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+# greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = gawa_sample
 TEMPLATE = app
@@ -16,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    artwork.cpp
+    artwork.cpp \
+    tw.cpp
 
 HEADERS  += mainwindow.h \
-    artwork.h
+    artwork.h \
+    tw.h
 
 FORMS    += mainwindow.ui
 
