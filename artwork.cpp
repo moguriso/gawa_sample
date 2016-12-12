@@ -1,8 +1,5 @@
 #include "artwork.h"
 
-//#include <QtWebEngineWidgets/QWebEngineView>
-#include <QNetworkAccessManager>
-
 Artwork::Artwork(QWidget *parent) : QGraphicsView(parent)
 {
     mImg = NULL;
@@ -14,7 +11,6 @@ Artwork::Artwork(QWidget *parent) : QGraphicsView(parent)
     if(isRegistered){
         qDebug() << "OK to register VBScript";
         m_script = m_manager->load("://test.vbs", "HelloWorld");
-        //m_script = m_manager->load("qrc://test.vbs", "HelloWorld");
     }
     else
         qDebug() << "NG to register VBScript";
@@ -203,15 +199,3 @@ void Artwork::finScript()
     mMutex.unlock();
 }
 
-void Artwork::mouseReleaseEvent(QMouseEvent *event)
-{
-#if 0
-    QWebEngineView* WebView = new QWebEngineView();
-    QUrl url = "https://www.google.co.jp";
-    WebView->load(url);
-    WebView->show();
-#else
-    QNetworkAccessManager qam;
-
-#endif
-}

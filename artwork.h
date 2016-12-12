@@ -17,8 +17,8 @@ class Artwork : public QGraphicsView
 public:
     Artwork(QWidget *parent);
     ~Artwork();
-    QString getArtworkPath();     //add
-    void nextTrack();             //add
+    QString getArtworkPath();
+    void nextTrack();
 
 
     int getImageWidth();
@@ -27,9 +27,8 @@ public:
     float getAspectRatio(bool);
     QString getTitle();
 
-//protected:
+protected:
     void paintEvent(QPaintEvent *);
-    void mouseReleaseEvent(QMouseEvent *);
 
 private:
     QImage *mImg;
@@ -37,8 +36,8 @@ private:
     QMutex mMutex;
 
     void setAlpha(QImage *qImg, int alpha);
-    QAxScriptManager *m_manager;  //add
-    QAxScript *m_script;          //add
+    QAxScriptManager *m_manager;
+    QAxScript *m_script;
     void enterScript();
     void finScript();
     void updateImage(QPaintEvent *, QString);
